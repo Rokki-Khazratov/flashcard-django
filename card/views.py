@@ -17,7 +17,7 @@ def all_category(request):
     return render(request, 'all_category.html' , context )
 
 
-
+#contextda hato ,html bilan solishtir
 def category_detail(request , category_id ):
     names = Category.objects.filter( id = category_id)
     context = {
@@ -29,6 +29,7 @@ def category_detail(request , category_id ):
 
 
 
+#views notogri emas,htmlni yoz
 def word_detail(request, word_id):
     name = Word.objects.filter( id = word_id )
     translate_uz = Word.objects.all()
