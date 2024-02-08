@@ -1,0 +1,33 @@
+1. models
+user:
+    user_name = 
+    password = 
+    email = 
+    words = Manytomany
+    in_correct_words = Manytomany
+
+word:
+
+    name = CharField(id = word_id)
+    translate_uz = sun(tarjimasi)
+    translate_ru =
+    rating = ChooseFaild(1 , , , 6)
+    is_formal = BoolenFaild()
+    category = FK
+
+
+word_detail:
+
+
+category:  (ozimiz kiritamiz categoryni)
+    name = CharField()
+
+
+
+
+index dan all_category 
+all_category category_detail
+category_detail  === word_detail
+
+
+

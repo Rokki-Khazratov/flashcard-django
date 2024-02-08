@@ -1,0 +1,11 @@
+from django.contrib import admin
+from django.urls import path
+from .views import *
+urlpatterns = [
+
+    path('', index, name='index'),
+    path('all_category/', all_category, name='all_category'),
+    path('category_detail/<int:category_id>/', category_detail , name='category_detail'),
+    path('word_detail/<int:word_id>/', word_detail , name = 'word_detail'),
+
+]
