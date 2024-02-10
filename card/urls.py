@@ -8,4 +8,7 @@ urlpatterns = [
     path('category_detail/<int:category_id>/', category_detail , name='category_detail'),
     path('word_detail/<int:word_id>/', word_detail , name = 'word_detail'),
 
+
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
 ]

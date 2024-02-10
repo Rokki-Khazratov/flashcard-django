@@ -1,34 +1,35 @@
-from django.db import models
+from django.db import models as m
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
-class Category(models.Model):
-    name = models.CharField(max_length=250)
+class Category(m.Model):
+    name = m.CharField(max_length=250)
 
 
     def __str__(self):
         return self.name
 
-#AbstactUser orqali meroslab olamiz
-class User(models.Model):
-    user_name = models.CharField(max_length=250)
-    password = models.IntegerField(default=1)
-    email = models.EmailField
-    words = models.ManyToManyField
-    in_correct_words = models.ManyToManyField
 
-
-    def __str__(self):
-        return self.name
-
-class Word(models.Model):
-    name = models.CharField(max_length  = 250)
-    translate_uz = models.TextField
-    translate_ru = models.TextField
-    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+class Word(m.Model):
+    name = m.CharField(max_length  = 250)
+    translate_uz = m.CharField(max_length  = 250)
+    translate_ru = m.CharField(max_length  = 250,blank=True)
+    category = m.ForeignKey(Category, on_delete = m.CASCADE)
 
     def __str__(self):
         return self.name
     
 
+class User(m.Model):
+    user = m.OneToOneField(User,on_delete = m.DO_NOTHING)
+    user_name = m.CharField(max_length=250)
+    password = m.IntegerField(default=1)
+    email = m.EmailField(blank=True)
+    words = m.ManyToManyField(Word,related_name='words')
+    in_correct_words = m.ManyToManyField(Word,related_name='incorrect_words')
 
+
+    def __str__(self):
+        return self.user_name
