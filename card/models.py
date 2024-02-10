@@ -9,7 +9,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
+#AbstactUser orqali meroslab olamiz
 class User(models.Model):
     user_name = models.CharField(max_length=250)
     password = models.IntegerField(default=1)

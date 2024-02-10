@@ -3,15 +3,19 @@ from .models import *
 # Create your views here.
 
 def index(request):
-    
-    
-    return render(request,'index.html')
+    categories= Category.objects.all()
+
+    context = {
+        'categories' : categories,
+    }    
+    return render(request,'index.html', context)
 
 
 def all_category(request):
-    name = Category.objects.all()
+    categories = Category.objects.all()
+
     context = {
-        'name' : name ,
+        'categories' : categories ,
     }
 
     return render(request, 'all_category.html' , context )

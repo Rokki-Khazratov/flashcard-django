@@ -10,6 +10,7 @@
 <body>
     CATEGORY_DETAIL :
 </br>
+
     {% for i in details  %}
         <a href= "{% url 'word_detail' i.id %}"> {{i.name}} </a>
     {% endfor %}

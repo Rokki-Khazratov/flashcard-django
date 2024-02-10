@@ -11,7 +11,8 @@
     TEST INDEX HTML
 </br>
 all categoryga otadgan qilish
-    {% for i in name  %}
+
+    {% for i in categories  %}
         <a href= "{% url 'all_category' %}"> {{i.name}} </a>
     {% endfor %}
 
