@@ -56,18 +56,30 @@ def word_detail(request, word_id):
 #? qila olmadim
 
 
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data[username]
+#             password = form.cleaned_data[password] 
+#             # django_user = User.objects.create_user(username = username, password = password)
+#             # form.save(django_user)
+#             return redirect('index')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'registration/register.html', {'form': form})
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data[username]
-            password = form.cleaned_data[password] 
-            # django_user = User.objects.create_user(username = username, password = password)
-            # form.save(django_user)
+            form.save()
             return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
 
 def login(request):
     if request.method == 'POST':
