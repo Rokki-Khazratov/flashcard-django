@@ -25,8 +25,8 @@ def all_category(request):
     return render(request, 'all_category.html' , context )
 
 
-#! details = shu {category_id} ga teng boganlari chiqishi kere money track dan korib orjganish
-#? tamomlandi bu 
+#? details = shu {category_id} ga teng boganlari chiqishi kere money track dan korib orjganish
+
 def category_detail(request , category_id ):
     details = Category.objects.get( id = category_id)
     dictionary = Word.objects.filter( category_id = category_id )
@@ -41,7 +41,9 @@ def category_detail(request , category_id ):
 
 
 #! shu sozni hamma fieldlarini chiqarosh ( name, tarjimasi, qaysi category,)  misol=[eng_soz: car,uz_tarjima"moshina", category = p22]
+
 #? money track dan korib organish hammasini!
+
 def word_detail(request, word_id):
     words = Word.objects.filter( id = word_id )
     translate_uz = Word.objects.all()
@@ -56,24 +58,22 @@ def word_detail(request, word_id):
 
 
 #?? --------------------user regoster 
-#! 1. yaratilgan django-userni malumuotlarini olib regsiterdan keyin shunga teng app user yaratih
+#! 1. yaratilgan django-userni malumuotlarini olib regsiterdan keyin shunga teng app user yaratish
+#? qila olmadim
+
 
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            # carduser.objects.create(
-            #     username=form.cleaned_data['username'],
-            #     email=form.cleaned_data['email'],
-            #     password=form.cleaned_data['password1']
-            # )
+
             return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
-#! login uchun  template yozasan 
+#? login uchun  template yozasan 
 
 def login(request):
     if request.method == 'POST':

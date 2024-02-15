@@ -1,1 +1,23 @@
 WORD HTML TEST
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB SAHIFA</title>
+</head>
+
+<body>
+
+
+    {% for i in words  %}
+    <h2>Words: {{ i.words }} </h2>
+    <h2>translate_uz: {{ i.translate_uz }}</h2>
+    {% endfor %}
+
+
+</body>
+
+</html>
+
