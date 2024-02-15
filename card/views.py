@@ -1,4 +1,3 @@
-
 from .models import *
 from .models import User as carduser
 
@@ -26,19 +25,23 @@ def all_category(request):
     return render(request, 'all_category.html' , context )
 
 
-#! details = shu {category_id} ga teng boganlari chiqishi kere
+#! details = shu {category_id} ga teng boganlari chiqishi kere money track dan korib orjganish
+#? tamomlandi bu 
 def category_detail(request , category_id ):
-    details = Category.objects.filter( id = category_id)
+    details = Category.objects.get( id = category_id)
+    dictionary = Word.objects.filter( category_id = category_id )
     context = {
-        'details' : details ,    
+        'details' : details ,
+        'dictionary' : dictionary
+
     }
 
 
     return render(request , 'category_detail.html' , context )
 
 
-
 #! shu sozni hamma fieldlarini chiqarosh ( name, tarjimasi, qaysi category,)  misol=[eng_soz: car,uz_tarjima"moshina", category = p22]
+#? money track dan korib organish hammasini!
 def word_detail(request, word_id):
     words = Word.objects.filter( id = word_id )
     translate_uz = Word.objects.all()
@@ -53,8 +56,7 @@ def word_detail(request, word_id):
 
 
 #?? --------------------user regoster 
-#1. yaratilgan django-userni malumuotlarini olib regsiterdan keyin shunga teng app user yaratih
-#2.
+#! 1. yaratilgan django-userni malumuotlarini olib regsiterdan keyin shunga teng app user yaratih
 
 def register(request):
     if request.method == 'POST':
@@ -71,7 +73,8 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
-#login uchun  template yozasan
+#! login uchun  template yozasan 
+
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
