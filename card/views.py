@@ -1,5 +1,6 @@
 from .models import *
 from .models import User as carduser
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
 
@@ -66,9 +67,11 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            username = form.cleaned_data[username]
+            password = form.cleaned_data[password]
 
-            return redirect('index')
+            django_user = User.objects.create_user(username = username, password = password)
+            return redirect('Foydalanuvchi qoshildi.')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
