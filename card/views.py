@@ -79,7 +79,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
-
+#? login uchun  template yozasan 
 
 def login(request):
     if request.method == 'POST':
@@ -94,4 +94,3 @@ def login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
-
