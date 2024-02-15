@@ -1,9 +1,7 @@
 from .models import *
 from .models import User as carduser
 from django.contrib.auth.models import User
-
 from django.shortcuts import render, redirect
-
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as auth_login, authenticate
 
@@ -26,7 +24,6 @@ def all_category(request):
     return render(request, 'all_category.html' , context )
 
 
-#? details = shu {category_id} ga teng boganlari chiqishi kere money track dan korib orjganish
 
 def category_detail(request , category_id ):
     details = Category.objects.get( id = category_id)
@@ -40,10 +37,6 @@ def category_detail(request , category_id ):
 
     return render(request , 'category_detail.html' , context )
 
-
-#! shu sozni hamma fieldlarini chiqarosh ( name, tarjimasi, qaysi category,)  misol=[eng_soz: car,uz_tarjima"moshina", category = p22]
-
-#? money track dan korib organish hammasini!
 
 def word_detail(request, word_id):
     words = Word.objects.filter( id = word_id )
@@ -68,15 +61,13 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data[username]
-            password = form.cleaned_data[password]
-
-            django_user = User.objects.create_user(username = username, password = password)
-            return redirect('Foydalanuvchi qoshildi.')
+            password = form.cleaned_data[password] 
+            # django_user = User.objects.create_user(username = username, password = password)
+            # form.save(django_user)
+            return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
-
-#? login uchun  template yozasan 
 
 def login(request):
     if request.method == 'POST':
