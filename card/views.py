@@ -49,7 +49,13 @@ def word_detail(request, word_id):
     return render(request, 'word_detail.html', context )
 
 
+def learn(request,):
+    word = Word.objects.all()
+    context = {
+        'word' : word ,
+    }
 
+    return render(request, 'learn.html', context )
 
 #?? --------------------user regoster 
 #! 1. yaratilgan django-userni malumuotlarini olib regsiterdan keyin shunga teng app user yaratish

@@ -13,7 +13,7 @@ urlpatterns = [
     path('login/', login, name='login'),
 
 
-    # path('learn/', learn, name='learn'),
+    path('learn/', learn, name='learn'),
     # path('known/', known, name='known'),
     # path('unknown/', unknown, name='unknown'),
 ]

@@ -5,13 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEB SAHIFA</title>
+    {% load static %}
+    <link rel="stylesheet" href="">
 </head>
 
 <body>
 
 
 
-    1. hamma worldar chiqishi
+    
+    {% for i in word %}
+    <h2>{{i.name}}</h2>
+</br>
+<button>Button</button>
+<button class="left">I unknown</button>
+<button class="right">I known</button>
+    {% endfor  %}
+    
+
+
 
 
 </body>
