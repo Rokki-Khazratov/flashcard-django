@@ -12,16 +12,13 @@
 <body>
 
 
-
-    
-    {% for i in word %}
-    <h2>{{i.name}}</h2>
+{% for i in word %}
+<h2>{{i.name}}</h2>
 </br>
-<button>Button</button>
+{% comment %} <button>Button</button> {% endcomment %}
 <button class="left">I unknown</button>
 <button class="right">I known</button>
-    {% endfor  %}
-    
+{% endfor %}
 
 
 
